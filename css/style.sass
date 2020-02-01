@@ -1,0 +1,65 @@
+@import "colors"
+
+html
+    font-size: 10px
+
+body
+    font-family: 'Roboto', sans-serif
+    overflow-x: hidden
+    font-size: 1.8rem
+    color: $main-color
+img
+    max-width: 100%
+h1,h2,h3,h4
+    font-family: 'Playfair Display', serif;
+
+@import "navbar"
+@import "index"
+.button-main
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding: 11px 32px;
+    font-size: 14px;
+    line-height: 24px;
+    border: 2px solid;
+    font-family: montserrat,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    user-select: none;
+    transition: 250ms all ease-in-out;
+    border-radius: 25px;
+    color: $main-color
+    background-color: $active-color
+    border-color: $active-color
+    &:hover
+        background-color: $active-button-color
+        border-color: $active-button-color
+    &:active
+        background-color: $active-button-color
+        border-color: $active-button-color
+    &:focus
+        outline: none
+
+.content
+    margin: 5rem 0
+    color: $shade-color
+    h2
+        font-size: 3.8rem
+    h4
+        font-size: 2.4rem
+    &-date
+        margin-top: 1rem
+
+footer
+    padding: 3rem
+    text-align: center
+    background-color: $section2
+    color: $main-color
+

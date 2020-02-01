@@ -1,0 +1,45 @@
+.title
+    background-color: $section2
+    padding: 2rem 0
+    overflow: hidden
+    
+    h1
+        position: relative
+        font-size: 4.4rem
+        z-index: 3
+    &-text
+        position: relative
+        &:after
+            position: absolute
+            bottom: -7rem
+            display: block
+            content: ''
+            width: 20rem
+            height: 20rem
+            background-color: $active-color
+            opacity: .5
+            border-radius: 50%
+
+.post
+    &-info
+        background-color: #fff
+        padding: 4rem
+        box-shadow: 0 0 22px rgba(0,0,0,.3)
+        margin-bottom: 4rem
+        h4
+            a
+                text-decoration: none
+                color: $main-color
+                transition: all .3s
+                &:hover
+                    color: $active-color
+    &-text
+        color: $shade-color
+        font-size: 1.6rem
+    &-meta
+        display: flex
+        justify-content: space-between
+        align-items: flex-end
+        color: $shade-color
+        font-size: 1.4rem
+        font-style: italic
