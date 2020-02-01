@@ -38,10 +38,19 @@ require_once "dbconnect.php";
                 <div class="content-main">
 
                     <?php
-                        $page = $_GET['page'];
-                        $sql = "select * from posts LIMIT 10 OFFSET :offset";
+                        $page = htmlspecialchars($_GET['page']);
+                        $limit = 5;
+                        $sql = "select count(*) from posts";
                         if ($stmt = $conn->prepare($sql)) {
-                            $stmt->bindValue(':offset', (int)$page, PDO::PARAM_INT);
+                            $stmt->execute();
+                            $page_count = (int)(($stmt->fetch()[0]-1)/$limit +1);
+                        }
+                        if($page < 1) $page = 1;
+                        if ($page > $page_count) $page = $page_count;
+                        $sql = "select * from posts LIMIT :limit OFFSET :offset";
+                        if ($stmt = $conn->prepare($sql)) {
+                            $stmt->bindValue(':offset', (int)$page*$limit - $limit, PDO::PARAM_INT);
+                            $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
                             $stmt->execute();
                             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($rows as $key => $row) {
@@ -51,6 +60,7 @@ require_once "dbconnect.php";
                                         <h4>
                                             <a href="/post.php?id=<?=$row['id'];?>">
                                                 <?= $row['title']?>
+                                                <?= $row['id']?>
                                             </a>
                                         </h4>
                                         <p class="post-text">
@@ -70,6 +80,24 @@ require_once "dbconnect.php";
                             <?php
                             }
                         }
+                        ?>
+                        <nav>
+                            <ul class="pagination">
+                            <li class="page-item <?php if($page==1) echo "disabled"?> ">
+                                <a class="page-link" href="/?page=<?=$page-1?>">Previous</a>
+                            </li>
+                        <?php
+                        for ($i=1; $i<=$page_count; $i++){
+                            echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>' ";
+                        }
+
+                        ?>
+                            <li class="page-item <?php if($page==$page_count) echo "disabled"?> ">
+                                <a class="page-link" href="/?page=<?=$page+1?>">Next</a>
+                            </li>
+                            </ul>
+                        </nav>
+                        <?php                        
                     ?>
                 </div>
             </div>

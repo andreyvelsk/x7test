@@ -20,10 +20,10 @@ require_once "dbconnect.php";
 <?php 
 include_once "header.php"; 
 
-$postid = (int)$_GET['id'];
+$postid = htmlspecialchars($_GET['id']);
 $sql = "select * from posts WHERE id = :id";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bindValue(':id', $postid);
+        $stmt->bindValue(':id', (int)$postid);
         $stmt->execute();
         $row = $stmt->fetch();
         if ($row != null) {
