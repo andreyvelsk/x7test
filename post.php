@@ -94,7 +94,13 @@ $sql = "select * from posts WHERE id = :id";
         <?php
         }
         else {
-            echo "404";
+            ?>
+                <div class="container d-flex justify-content-center">
+                    <h1>
+                        404
+                    </h1>
+                </div>
+            <?php
         }
     }
 ?>

@@ -2,12 +2,14 @@
 
 html
     font-size: 10px
+    height: 100%
 
 body
     font-family: 'Roboto', sans-serif
     overflow-x: hidden
     font-size: 1.8rem
     color: $main-color
+    height: 100%
 img
     max-width: 100%
 h1,h2,h3,h4
@@ -17,8 +19,12 @@ h1,h2,h3,h4
 @import "index"
 @import "post"
 @import "contacts"
-.content
-    flex-grow: 1
+.wrapper
+    display: flex;
+    flex-direction: column;
+    min-height: 100%
+.container
+    flex: 1 0 auto
 .button-main
     position: relative;
     overflow: hidden;
@@ -56,5 +62,6 @@ footer
     text-align: center
     background-color: $section2
     color: $main-color
+    flex: 0 0 auto;
 
 @import "media"

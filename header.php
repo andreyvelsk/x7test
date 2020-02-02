@@ -22,7 +22,7 @@ require_once "dbconnect.php";
 </head>
 <body>
 <!-- logged in user information -->
-
+<div class="wrapper">
 <nav class="top-navbar">
     <div class="container">
         <div class="row mainnavbar">
