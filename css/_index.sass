@@ -30,7 +30,6 @@
             a
                 text-decoration: none
                 color: $main-color
-                transition: all .3s
                 &:hover
                     color: $active-color
     &-text
@@ -43,3 +42,14 @@
         color: $shade-color
         font-size: 1.4rem
         font-style: italic
+
+.pagination
+    .page-item
+        a
+            padding: 1.2rem
+            color: $main-color
+    .active a.page-link
+        background-color: $active-button-color
+        border-color: #fff;
+        color: $main-color
+

@@ -39,7 +39,7 @@ require_once "dbconnect.php";
 
                     <?php
                         $page = htmlspecialchars($_GET['page']);
-                        $limit = 5;
+                        $limit = 10;
                         $sql = "select count(*) from posts";
                         if ($stmt = $conn->prepare($sql)) {
                             $stmt->execute();
@@ -84,16 +84,27 @@ require_once "dbconnect.php";
                         <nav>
                             <ul class="pagination">
                             <li class="page-item <?php if($page==1) echo "disabled"?> ">
-                                <a class="page-link" href="/?page=<?=$page-1?>">Previous</a>
+                                <a class="page-link" href="/?page=1">First</a>
+                            </li>
+                            <li class="page-item <?php if($page==1) echo "disabled"?> ">
+                                <a class="page-link" href="/?page=<?=$page-1?>"><</a>
                             </li>
                         <?php
+                        $counter = 0;
                         for ($i=1; $i<=$page_count; $i++){
-                            echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>' ";
+                            if ($i < $page - 3 || $i > $page + 3) continue;
+                            if ($i == $page) $active = "active";
+                            else $active = "";
+                            echo "<li class='page-item $active'><a class='page-link' href='?page=$i'>$i</a></li>";
+                            $counter++;
                         }
 
                         ?>
                             <li class="page-item <?php if($page==$page_count) echo "disabled"?> ">
-                                <a class="page-link" href="/?page=<?=$page+1?>">Next</a>
+                                <a class="page-link" href="/?page=<?=$page+1?>">></a>
+                            </li>
+                            <li class="page-item <?php if($page==$page_count) echo "disabled"?> ">
+                                <a class="page-link" href="/?page=<?=$page_count?>">Last</a>
                             </li>
                             </ul>
                         </nav>

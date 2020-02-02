@@ -122,8 +122,6 @@ h1, h2, h3, h4 {
 .post-info h4 a {
   text-decoration: none;
   color: #151515;
-  -webkit-transition: all .3s;
-  transition: all .3s;
 }
 
 .post-info h4 a:hover {
@@ -150,6 +148,17 @@ h1, h2, h3, h4 {
   font-style: italic;
 }
 
+.pagination .page-item a {
+  padding: 1.2rem;
+  color: #151515;
+}
+
+.pagination .active a.page-link {
+  background-color: #b4e5db;
+  border-color: #fff;
+  color: #151515;
+}
+
 .button-main {
   position: relative;
   overflow: hidden;
@@ -171,8 +180,6 @@ h1, h2, h3, h4 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-transition: 250ms all ease-in-out;
-  transition: 250ms all ease-in-out;
   border-radius: 25px;
   color: #151515;
   background-color: #cef1ea;
