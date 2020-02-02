@@ -1,3 +1,11 @@
+<?php 
+  session_start(); 
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: login.php");
+  }
+?>
 <?php
 require_once "dbconnect.php";
 ?>
@@ -9,14 +17,11 @@ require_once "dbconnect.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600|Playfair+Display:700|Roboto:400,700" rel="stylesheet">
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 </head>
 <body>
+<!-- logged in user information -->
 
 <nav class="top-navbar">
     <div class="container">
@@ -25,9 +30,20 @@ require_once "dbconnect.php";
                 <a class="menu-item" href="/">Logo</a></li>
             </div>
             <div class="col-md-10">
-            <ul class="mainnavbar-menu">
-                    <li class="menu-item"><a href="#">Вход</a></li>   
-                    <li class="menu-item"><a href="#">Регистрация</a></li>   
+                <ul class="mainnavbar-menu">
+                <?php  
+                    if (isset($_SESSION['username'])) { ?>
+                        <li class="menu-item"><a><?php echo $_SESSION['username']; ?></a></li>
+                        <li> <a href="index.php?logout='1'">Выход</a> </li>
+                <?php 
+                }
+                else {
+                    ?>
+                    <li class="menu-item"><a href="/login.php">Вход</a></li>   
+                    <li class="menu-item"><a href="/register.php">Регистрация</a></li>   
+                    <?php
+                }                
+                ?>
                 </ul>
             </div>
         </div>

@@ -16,6 +16,9 @@ h1,h2,h3,h4
 @import "navbar"
 @import "index"
 @import "post"
+@import "contacts"
+.content
+    flex-grow: 1
 .button-main
     position: relative;
     overflow: hidden;
@@ -38,6 +41,7 @@ h1,h2,h3,h4
     color: $main-color
     background-color: $active-color
     border-color: $active-color
+    transition: 250ms all ease-in-out;
     &:hover
         background-color: $active-button-color
         border-color: $active-button-color

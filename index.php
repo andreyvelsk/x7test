@@ -40,14 +40,13 @@
                                         <h4>
                                             <a href="/post.php?id=<?=$row['id'];?>">
                                                 <?= $row['title']?>
-                                                <?= $row['id']?>
                                             </a>
                                         </h4>
                                         <p class="post-text">
                                             <?= substr($row['content'], 0, 200) . "...";?>
                                         </p>
                                         <div class="post-meta">
-                                            <button class="button-main" onclick="window.location.href = '/post.php?id=1';">
+                                            <button class="button-main" onclick="window.location.href = '/post.php?id=<?=$row['id'];?>';">
                                                 Подробнее
                                             </button>
                                             <span>
@@ -98,5 +97,3 @@
 
     <!--page-->
 <?php include_once "footer.php";?>
-</body>
-</html>

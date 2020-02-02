@@ -1,7 +1,8 @@
-<?php 
+<?php
+$postid = htmlspecialchars($_GET['id']);
+include "addcomment.php";
 include_once "header.php"; 
 
-$postid = htmlspecialchars($_GET['id']);
 $sql = "select * from posts WHERE id = :id";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bindValue(':id', (int)$postid);
@@ -36,7 +37,7 @@ $sql = "select * from posts WHERE id = :id";
 
                 <h2>Комментарии</h2>
                 <?php
-                    $sql = "select c.*, u.email from comments c LEFT JOIN users u ON c.iduser = u.id WHERE idpost = :idpost";
+                    $sql = "select c.* from comments c WHERE idpost = :idpost";
                     if ($stmt = $conn->prepare($sql)) {
                         $stmt->bindValue(':idpost', (int)$postid);
                         $stmt->execute();
@@ -47,10 +48,10 @@ $sql = "select * from posts WHERE id = :id";
                                     <div class="comment">
                                         <div class="comment-item">
                                             <div class="comment-text">
-                                                <?= $row['commenttext']?>
+                                                <?= nl2br($row['commenttext'])?>
                                             </div>
                                             <div class="comment-meta">
-                                            <?= $row['email']?>, <?= $row['commentdate']?>
+                                            <?= $row['commentuser']?>, <?= $row['commentdate']?>
                                             </div>
                                         </div>
                                     </div>
@@ -58,10 +59,34 @@ $sql = "select * from posts WHERE id = :id";
                             }
                 
                         } else {
-                            echo "no comments";
+                            ?>
+                                <div class="content">
+                                    Нет комментариев
+                                </div>
+                            <?php
                         }
-                    }
-
+                    }                    
+                ?>
+                <?php  
+                if (isset($_SESSION['username'])) { 
+                ?>
+                <h2>Добавить комментарий</h2>
+                <form action="/post.php?id=<?=$postid;?>" method="post" class="contactform contactform-comment">
+                <?php include('errors.php'); ?>
+                    <div class="contactform-row">
+                        <input class="contactform-input" type="text" name="username" placeholder="Имя">
+                    </div>
+                    <div class="contactform-row">
+                        <textarea class="contactform-input" name="comment" placeholder="Комментарий"></textarea>
+                    </div>                
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="button-main" name="add_comment">
+                            Отправить
+                        </button>
+                    </div>
+                </form>
+                <?php 
+                }
                 ?>
             </div>
 
@@ -74,6 +99,4 @@ $sql = "select * from posts WHERE id = :id";
     }
 ?>
 
-    <?php include_once "footer.php"; ?>
-</body>
-</html>
+<?php include_once "footer.php"; ?>
