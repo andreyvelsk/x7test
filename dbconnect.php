@@ -9,7 +9,7 @@ try {
     $conn = new PDO('mysql:host=localhost;dbname=testx7;charset=UTF8', $username, $password);
 }
 catch (PDOException $e) {
-    echo 'Подключение не удалось: ' . $e->getMessage();
+    die('Подключение не удалось: ' . $e->getMessage());
 }
 
 ?>

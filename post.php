@@ -37,7 +37,7 @@ $sql = "select * from posts WHERE id = :id";
 
                 <h2>Комментарии</h2>
                 <?php
-                    $sql = "select c.* from comments c WHERE idpost = :idpost";
+                    $sql = "select c.* from comment c WHERE idpost = :idpost";
                     if ($stmt = $conn->prepare($sql)) {
                         $stmt->bindValue(':idpost', (int)$postid);
                         $stmt->execute();

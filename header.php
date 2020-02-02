@@ -26,10 +26,10 @@ require_once "dbconnect.php";
 <nav class="top-navbar">
     <div class="container">
         <div class="row mainnavbar">
-            <div class="mainnavbar-logo col-md-2">
+            <div class="mainnavbar-logo col-2">
                 <a class="menu-item" href="/">Logo</a></li>
             </div>
-            <div class="col-md-10">
+            <div class="col-10">
                 <ul class="mainnavbar-menu">
                 <?php  
                     if (isset($_SESSION['username'])) { ?>

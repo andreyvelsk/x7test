@@ -331,4 +331,29 @@ footer {
   background-color: #f6f9f9;
   color: #151515;
 }
+
+@media (max-width: 390px) {
+  .top-navbar .mainnavbar {
+    font-size: 1.4rem;
+  }
+  .top-navbar .mainnavbar a {
+    margin: 1rem;
+  }
+  .post-meta .button-main {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  .post-meta span {
+    font-size: 1.2rem;
+  }
+  .contactform {
+    width: 100%;
+  }
+  .contactform .button-main {
+    width: 100%;
+  }
+  .comment-item {
+    padding: 2rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */

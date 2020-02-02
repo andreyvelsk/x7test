@@ -16,7 +16,7 @@ if (isset($_POST['add_comment'])) {
 
     if (count($errors) == 0) {
         $password = md5($password_1);
-        $sql = "INSERT INTO comments VALUES (default, :idpost, :commentuser, :commenttext, default)";
+        $sql = "INSERT INTO comment VALUES (default, :idpost, :commentuser, :commenttext, default)";
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bindValue(':idpost', $postid);
             $stmt->bindValue(':commentuser', $username);
@@ -25,6 +25,7 @@ if (isset($_POST['add_comment'])) {
                 header('location: /post.php?id=' . $postid);
             }
             else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
                 array_push($errors, "Не удалось добавить комментарий");
             }
         }

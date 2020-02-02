@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 02 2020 г., 15:25
+-- Время создания: Фев 02 2020 г., 21:34
 -- Версия сервера: 10.3.13-MariaDB-log
--- Версия PHP: 7.3.9
+-- Версия PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,24 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `comments`
+-- Структура таблицы `comment`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `idpost` int(11) NOT NULL,
-  `iduser` int(11) NOT NULL,
-  `commenttext` text NOT NULL,
+  `commentuser` varchar(200) DEFAULT NULL,
+  `commenttext` text DEFAULT NULL,
   `commentdate` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `comments`
+-- Дамп данных таблицы `comment`
 --
 
-INSERT INTO `comments` (`id`, `idpost`, `iduser`, `commenttext`, `commentdate`) VALUES
-(1, 1, 1, 'test comment', '2020-02-02'),
-(2, 1, 1, 'test coomment2', '2020-02-02');
+INSERT INTO `comment` (`id`, `idpost`, `commentuser`, `commenttext`, `commentdate`) VALUES
+(2, 1, 'andrey29', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. At eligendi quod, quisquam modi doloremque veritatis culpa dolorum, ex vel architecto reprehenderit quis voluptates, hic a corporis. Labore, aliquam dolores. Reprehenderit ratione perferendis quae nisi earum nam adipisci veritatis eius vitae, laborum quaerat tempore in velit et maiores, ad provident molestiae. Temporibus consequuntur dolore inventore porro, mollitia assumenda ipsam fugiat animi quos. Quia facilis dolores culpa quas rem aspernatur. Consequatur qui deserunt rerum, nemo officia quam, fugit consequuntur odio omnis aspernatur est illum aperiam necessitatibus consectetur ipsa minus vel dolorum laudantium eum molestiae earum ratione quae doloremque? Voluptas magni ullam velit debitis esse quae quisquam nam aperiam aliquam, mollitia harum earum hic dicta alias quidem consectetur eaque assumenda quod maiores ipsum tenetur facilis perferendis! Molestiae enim aliquam blanditiis. Nemo adipisci magnam distinctio accusantium facere esse nam alias natus nisi! Alias asperiores quam quas. Assumenda aperiam mollitia cum laboriosam. Obcaecati eum animi, ducimus voluptatum itaque recusandae unde, suscipit iste earum ex eaque modi ut placeat. Optio tempora, voluptates dolor adipisci voluptatum beatae ducimus libero laudantium, quam modi error. Eaque unde, dolores cupiditate assumenda tempore, quibusdam, veritatis repudiandae eveniet corporis nesciunt esse ipsum dolor in at reprehenderit. Voluptas quidem modi tempora! Ratione quod eveniet accusamus commodi temporibus illum, obcaecati perferendis minima impedit quidem debitis. Eaque, doloribus? Error, fuga corporis ipsum soluta quas explicabo reprehenderit esse voluptates animi vero nostrum obcaecati fugiat distinctio nulla quasi, doloremque, voluptate ipsa incidunt libero sapiente? Soluta perferendis maxime sapiente quas corrupti voluptates asperiores. Minima minus nam obcaecati aperiam dignissimos ad animi asperiores sapiente rem doloremque repellat cum officia debitis consequuntur nihil ea doloribus consequatur, voluptas repudiandae accusamus omnis. Et saepe exercitationem labore reprehenderit quam, corrupti natus aperiam eum praesentium adipisci rerum veniam corporis iure atque ea, quasi eius vitae! Vero, ut voluptate placeat quidem impedit repellat culpa dolorem.', '2020-02-02'),
+(4, 1, 'andrey29', 'isicing elit. At eligendi quod, quisquam modi doloremque veritatis culpa dolorum, ex vel architecto reprehenderit quis voluptates, \r\nhic a corporis. Labore, aliquam dolores. Reprehenderit ratione perferendis quae nisi earum nam adipisci veritatis eius vitae, laborum quaerat tempore in velit et maiores, ad provident molestiae.\r\n\r\nTemporibus consequuntur dolore inventore porro, mollitia assumenda ipsam fugiat animi quos. Quia facilis dolores culpa quas rem aspernatur. Consequatur qui deserunt rerum, nemo officia quam, fugit consequuntur odio omnis aspernatur est illum aperiam necessitatibus consectetur ipsa minus vel dolorum laudantium eum molestiae earum ratione quae doloremque? Voluptas magni ullam velit debitis esse quae quisquam nam aperiam aliquam, mollitia harum earum hic dicta alias quidem consectetur eaque assumenda quod maiores ipsum tenetur facilis perferendis! Molestiae enim aliquam blanditiis. Nemo adipisci magnam distinctio accusantium facere esse nam alias natus nisi! Alias ', '2020-02-02'),
+(5, 2, 'testuser', ' aliquid aperiam. Facilis ducimus sapiente rerum, blanditiis delectus mollitia a reiciendis, tempore odio minus nesciunt ut unde recusandae ab! Quisquam, rem. Perspiciatis neque commodi fugiat nostrum esse exercitationem explicabo quibusdam. Inventore quisquam obcaecati velit repudiandae nesciunt ullam aliquid nam repellendus atque quos at, hic perspiciatis non, voluptatem earum iure reiciendis ipsa optio placeat quod ipsum. Praesentium rerum aliquam inventore dicta ut corrupti, vitae sit eum. Repellendus unde harum odio dolor repellat nesciunt consequatur molestiae aut in, dolorem odit sequi ducimus adipisci debitis tempora tempore tenetur, eligendi dolorum. Quia provident rerum soluta natus ex. Id ut consequatur neque pariatur cupiditate! Quia corrupti facilis vel earum ducimus corporis, aliquid saepe harum debitis ipsa magni. Quod, alias. Repellat officiis saepe nemo accusantium, adipisci cum et necessitatibus velit, deserunt magni vero explicabo reprehenderit ullam sapiente incidunt. Odit, corrupti. Modi aspernatur, eum dolorem culpa dolorum facere doloremque, cum consectetur corrupti sapiente neque, delectus quasi incidunt dignissimos minima? Modi quas fugiat ex nobis voluptas facere quidem enim asperiores eos odit? Porro facere nulla sit quibusdam rem vero in eius asperiores consequuntur suscipit, provident laborum\r\n\r\n, mollitia eveniet, accusamus perspiciatis maxime esse. \r\n\r\nNihil, animi dignissimos eveniet laboriosam optio facilis id culpa excepturi at illum cupiditate reprehenderit recusandae temporibus enim eum incidunt, ad, deserunt quo', '2020-02-02');
 
 -- --------------------------------------------------------
 
@@ -84,8 +85,8 @@ INSERT INTO `posts` (`id`, `title`, `content`, `date`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `email` varchar(200) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -93,19 +94,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(1, 'admin@mail.ru', 'P@ssw0rd');
+(1, 'andrey_velsk@mail.ru', '633de4b0c14ca52ea2432a3c8a5c4c31');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `comments`
+-- Индексы таблицы `comment`
 --
-ALTER TABLE `comments`
+ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idpost` (`idpost`),
-  ADD KEY `iduser` (`iduser`);
+  ADD KEY `idpost` (`idpost`);
 
 --
 -- Индексы таблицы `posts`
@@ -124,10 +124,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `comments`
+-- AUTO_INCREMENT для таблицы `comment`
 --
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
@@ -146,11 +146,10 @@ ALTER TABLE `users`
 --
 
 --
--- Ограничения внешнего ключа таблицы `comments`
+-- Ограничения внешнего ключа таблицы `comment`
 --
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`idpost`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`iduser`) REFERENCES `users` (`id`);
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`idpost`) REFERENCES `posts` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
